@@ -90,12 +90,10 @@ app = Flask(__name__)
 clip_img_search_obj = clip_image_search()
 
 #Specify image folder for running image search on (would be specified by user before app start up)
-# IMAGE_FOLDER = os.environ.get(
-#     'IMAGE_FOLDER',
-#     os.path.join(app.static_folder, 'images')
-# )
-
-IMAGE_FOLDER="testImages"
+IMAGE_FOLDER = os.environ.get(
+    'IMAGE_FOLDER',
+    os.path.join(app.static_folder, 'images')
+)
 
 #don't need to do anything until user posts a search prompt
 @app.route('/', methods=['GET'])
@@ -129,7 +127,7 @@ def get_all_img_paths():
     
     return render_template('previewFolder.html', images=[os.path.basename(img_path) for img_path in img_paths])
 
-#need this for serving images to frontend, if not using static folder for storing images
+#need this for serving images to frontend
 @app.route('/images/<path:filename>')
 def serve_image(filename):
     return send_from_directory(IMAGE_FOLDER, filename)
