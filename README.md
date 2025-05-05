@@ -1,6 +1,6 @@
 A webapp for searching images using text prompts made using FAISS and CLIP's image and text encoders to perform image search with text prompts<br><br>
 To use the containerized webapp:<br><br>
--git clone https://github.com/SmallChungus1/image-search-vlm.git into specified folder<br><br>
+-`git clone https://github.com/SmallChungus1/image-search-vlm.git` into specified folder<br><br>
 -Copy your CLIP model folder from huggingface under 'models' folder: https://huggingface.co/docs/transformers/model_doc/clip<br><br>
 -Create an image using <br>
 `docker build -t {image name}:{tag name} .`<br><br>
