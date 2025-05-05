@@ -106,14 +106,15 @@ def index():
 @app.route('/searchImage', methods=['POST'])
 def search_images():
     search_prompt = request.form['searchPromptInput']
-    #result_limit = request.form['resultLimitInput']
+    result_limit = request.form['resultLimitInput']
+    result_limit = int(result_limit)
     global IMAGE_FOLDER
 
     #encode imgs first
     clip_img_search_obj.encode_imgs(IMAGE_FOLDER)
 
     #then encode prompt and search imgs
-    _, queried_indicies = clip_img_search_obj.search_imgs(search_prompt, result_limit=3)
+    _, queried_indicies = clip_img_search_obj.search_imgs(search_prompt, result_limit=result_limit)
 
     matched_img_paths = clip_img_search_obj.retrieve_images_as_uris(IMAGE_FOLDER, queried_indicies)
     matched_img_paths_basenames = [os.path.basename(img_path) for img_path in matched_img_paths]
