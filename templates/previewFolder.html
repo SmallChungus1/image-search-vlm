@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Image Search Tool-Folder Preview</title>
+  <title>Image Search Tool – Folder Preview</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <h1>Folder Preview</h1>
-  {% if images %}
+  <div class="container">
+    <h1>Folder Preview</h1>
+    {% if images %}
     {% for fn in images %}
       <img
         src="{{ url_for('serve_image', filename=fn) }}"
@@ -17,5 +19,6 @@
   {% else %}
     <p>No results yet.</p>
   {% endif %}
+  </div>
 </body>
 </html>

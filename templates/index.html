@@ -2,32 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Image Search Tool-Home</title>
+  <title>Image Search Tool – Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <h1>Preview folder</h1>
-  <form action="{{ url_for('get_all_img_paths') }}" method="get">
-    <button type="submit">Go</button>
-  </form>
-  
-  <h1>Search images from your folder with text</h1>
-  <form action="{{ url_for('search_images') }}" method="post">
-    <input
-      type="text"
-      name="searchPromptInput"
-      placeholder="Start searching for images..."
-      required
-    >
-    <input
-      type="number"
-      name="resultLimitInput"
-      min="1"
-    >
-    <button type="submit">Search</button>
-  </form>
+  <div class="container">
+    <h1>Preview Folder</h1>
+    <form action="{{ url_for('get_all_img_paths') }}" method="get">
+      <button type="submit">Go</button>
+    </form>
 
-  <h1>Results</h1>
-  {% if images %}
+    <h1>Search Images</h1>
+    <form action="{{ url_for('search_images') }}" method="post">
+      <input
+        type="text"
+        name="searchPromptInput"
+        placeholder="Start searching for images…"
+        required
+      >
+      <input
+        type="number"
+        name="resultLimitInput"
+        min="1"
+        value="1"
+        placeholder="Max results"
+      >
+      <button type="submit">Search</button>
+    </form>
+
+    <h1>Results</h1>
+    {% if images %}
     {% for fn in images %}
       <img
         src="{{ url_for('serve_image', filename=fn) }}"
@@ -38,5 +42,6 @@
   {% else %}
     <p>No results yet.</p>
   {% endif %}
+  </div>
 </body>
 </html>

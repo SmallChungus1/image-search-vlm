@@ -1,0 +1,83 @@
+:root {
+    --accent: #007ACC;
+    --bg: #F7F9FC;
+    --fg: #333;
+    --card-bg: #fff;
+    --radius: 8px;
+    --gap: 1rem;
+    --transition: 0.2s ease-in-out;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: var(--gap);
+  }
+  
+  h1 {
+    color: var(--accent);
+    margin-bottom: var(--gap);
+  }
+  
+  form {
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: calc(2 * var(--gap));
+  }
+  
+  form input[type="text"],
+  form input[type="number"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #CCC;
+    border-radius: var(--radius);
+    transition: border-color var(--transition);
+  }
+  
+  form input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  
+  form button {
+    background-color: var(--accent);
+    border: none;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition);
+  }
+  
+  form button:hover {
+    background-color: darken(var(--accent),10%);
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--gap);
+  }
+  
+  .gallery img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform var(--transition);
+  }
+  
+  .gallery img:hover {
+    transform: scale(1.02);
+  }
+  
