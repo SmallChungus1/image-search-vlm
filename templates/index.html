@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Image Search Tool-Home</title>
+</head>
+<body>
+  <h1>Preview folder</h1>
+  <form action="{{ url_for('get_all_img_paths') }}" method="get">
+    <button type="submit">Go</button>
+  </form>
+  
+  <h1>Search images from your folder with text</h1>
+  <form action="{{ url_for('search_images') }}" method="post">
+    <input
+      type="text"
+      name="searchPromptInput"
+      placeholder="Start searching for images..."
+      required
+    >
+    <button type="submit">Search</button>
+  </form>
+
+  <h1>Results</h1>
+  {% if images %}
+    {% for fn in images %}
+      <img
+        src="{{ url_for('serve_image', filename=fn) }}"
+        style="max-width:200px; margin:.5rem;"
+        alt="{{ fn }}"
+      />
+    {% endfor %}
+  {% else %}
+    <p>No results yet.</p>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Image Search Tool-Folder Preview</title>
+</head>
+<body>
+  <h1>Folder Preview</h1>
+  {% if images %}
+    {% for fn in images %}
+      <img
+        src="{{ url_for('serve_image', filename=fn) }}"
+        style="max-width:200px; margin:.5rem;"
+        alt="{{ fn }}"
+      />
+    {% endfor %}
+  {% else %}
+    <p>No results yet.</p>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,4 @@
+image-search-venv
+models/clip-finetune-results
+testImages
+__pycache__/
